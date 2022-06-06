@@ -1,8 +1,7 @@
-const { json } = require("body-parser");
+
 const { randomUUID } = require("crypto");
 const express = require("express");
 const fs = require("fs");
-const { parse } = require("path");
 
 const app = express();
 
@@ -57,7 +56,6 @@ app.post("/user/login", (req, res, next) => {
   });
 });
 
-app.listen(8080);
 
 app.post("/user/logout", (req, res, next) => {
   fs.readFile("./db.json", { encoding: "utf-8" }, (err, data) => {
@@ -136,6 +134,6 @@ app.get("/votes/count/:user", (req, res) => {
   });
 });
 
-// const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
-app.listen(3001);
+app.listen(3031);
