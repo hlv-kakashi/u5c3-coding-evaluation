@@ -1,6 +1,8 @@
+const { json } = require("body-parser");
 const { randomUUID } = require("crypto");
 const express = require("express");
 const fs = require("fs");
+const { parse } = require("path");
 
 const app = express();
 
@@ -27,7 +29,9 @@ app.post("/user/create", (req, res) => {
       JSON.stringify(parsed),
       { encoding: "utf-8" },
       () => {
-        res.status(201).send("user created");
+        res
+          .status(201)
+          .json({ status: "user created", id_of_user: req.body.id });
       }
     );
   });
@@ -96,6 +100,42 @@ app.get(`/votes/voters`, (req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 8080;
+app.post("/votes/vote/:user", (req, res) => {
+  const { user } = req.params;
+  fs.readFile("./db.json", { encoding: "utf-8" }, (err, data) => {
+    const parsed = JSON.parse(data);
+    parsed.users = parsed.users.map((oneuser) => {
+      if (oneuser.name == user) {
+        oneuser.votes++;
+        return fs.writeFile(
+          "./db.json",
+          JSON.stringify(parsed),
+          { encoding: "utf-8" },
+          () => {
+            res.status(201).json({ status: "vote increase successfully" });
+          }
+        );
+      }
+    });
+  });
+});
 
-app.listen(PORT);
+app.get("/votes/count/:user", (req, res) => {
+  const { user } = req.params;
+  fs.readFile("./db.json", { encoding: "utf-8" }, (err, data) => {
+    const parsed = JSON.parse(data);
+    const voters = parsed.users.map((oneuser) => {
+      if (oneuser.name == user) {
+        return res.json({ status: oneuser.votes });
+      }
+      // else{
+      //     return res.json({"status": "cannot fine user"})
+      // }
+    });
+    // return res.json({ "status": "cannot find user" });
+  });
+});
+
+// const PORT = process.env.PORT || 8080;
+
+app.listen(3001);
