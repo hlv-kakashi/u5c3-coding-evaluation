@@ -136,4 +136,4 @@ app.get("/votes/count/:user", (req, res) => {
 
 const PORT = process.env.PORT || 8080;
 
-app.listen(3031);
+app.listen( PORT);
