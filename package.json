@@ -10,6 +10,11 @@
   "scripts": {
     "dev": "nodemon index.js"
   },
+  
+"engines": {
+  "node": "16.x"
+}
+  ,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hlv-kakashi/u5c3-coding-evaluation.git"
