@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "name": "John Doe",
+      "role": "voter",
+      "username": "john",
+      "password": "1234",
+      "age": 15
+    },
+    {
+      "name": "anupam",
+      "role": "voter",
+      "username": "anupam",
+      "password": "1234567",
+      "age": 15
+    },
+    {
+      "name": "Donald Trump",
+      "role": "candidate",
+      "votes": 0,
+      "party": "republicans",
+      "age": 15
+    },
+    {
+      "name": "modi",
+      "role": "candidate",
+      "votes": 0,
+      "party": "bjp",
+      "age": 15
+    }
+  ]
+}

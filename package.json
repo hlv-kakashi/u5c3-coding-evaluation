@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
+  },
+  "name": "u5c3-coding-evaluation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hlv-kakashi/u5c3-coding-evaluation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hlv-kakashi/u5c3-coding-evaluation/issues"
+  },
+  "homepage": "https://github.com/hlv-kakashi/u5c3-coding-evaluation#readme",
+  "description": ""
+}
