@@ -89,11 +89,13 @@ app.get(`/votes/party/:party`, (req, res, next) => {
 });
 
 app.get(`/votes/voters`, (req, res, next) => {
-    fs.readFile("./db.json", { encoding: "utf-8" }, (err, data) => {
-      const parsed = JSON.parse(data);
-      parsed.users = parsed.users.filter((el) => el.role === "voter");
-      res.send(parsed.users);
-    });
+  fs.readFile("./db.json", { encoding: "utf-8" }, (err, data) => {
+    const parsed = JSON.parse(data);
+    parsed.users = parsed.users.filter((el) => el.role === "voter");
+    res.send(parsed.users);
   });
+});
 
-app.listen(3001);
+const PORT = process.env.PORT || 8080;
+
+app.listen(8080);
